@@ -1,0 +1,23 @@
+# Next.js
+.next/
+out/
+build/
+
+# Node modules
+node_modules/
+
+# Logs
+*.log
+build_output.txt
+
+# Environment variables
+.env*.local
+
+# Cache
+tsconfig.tsbuildinfo
+
+# DS_Store
+.DS_Store
+
+# Dev scripts
+dev.bat
