@@ -41,88 +41,142 @@ export default function Overlay() {
         {/* ── HERO ── */}
         <motion.div
           style={{ opacity: o1, y: y1, scale: scale1 }}
-          className="absolute inset-0 z-10"
+          className="absolute inset-0 z-10 flex flex-col justify-center px-6 md:px-12 lg:px-24"
           data-hero-content
         >
-          {/* Centered hero content container positioned at ~47% from top */}
-          <div
-            className="absolute left-1/2 w-full max-w-[950px] px-6 text-center"
-            style={{
-              top: '47%',
-              transform: 'translate(-50%, -50%)',
-            }}
-          >
+          <div className="w-full max-w-[1400px] mx-auto flex flex-col lg:flex-row items-center justify-between gap-10 lg:gap-0 h-full relative pt-10 md:pt-20">
+            
+            {/* Left Side Content */}
             <motion.div
-              initial={{ opacity: 0, y: 40 }}
-              animate={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, x: -40 }}
+              animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 1.1, ease: [0.22, 1, 0.36, 1] }}
-              className="flex flex-col items-center"
+              className="flex flex-col items-start text-left max-w-[600px] z-20 pointer-events-auto"
             >
               {/* Eyebrow */}
-              <motion.p
-                initial={{ opacity: 0, y: 12 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.2, duration: 0.8, ease: "easeOut" }}
-                className="text-[11px] md:text-[12px] tracking-[0.4em] uppercase font-semibold mb-7 md:mb-8"
-                style={{ color: 'rgba(255,255,255,0.38)' }}
-              >
-                AI & DATA SCIENCE ENGINEER
-              </motion.p>
+              <div className="flex items-center gap-2 px-4 py-1.5 rounded-full border border-white/[0.12] bg-white/[0.03] mb-6 shadow-sm">
+                <div className="w-1.5 h-1.5 rounded-full bg-purple-500 shadow-[0_0_8px_rgba(168,85,247,0.8)]"></div>
+                <span className="text-[10px] md:text-[11px] tracking-[0.2em] font-semibold text-white/70 uppercase">
+                  DATA PIPELINE ARCHITECT
+                </span>
+              </div>
 
-              <h1
-                className="leading-[0.92] font-extrabold text-white mb-6 md:mb-7"
-                style={{
-                  fontFamily: 'var(--font-space)',
-                  fontSize: 'clamp(5rem, 8vw, 8.5rem)',
-                  letterSpacing: '-0.05em',
-                  textShadow: '0 2px 20px rgba(0,0,0,0.35)',
-                }}
-              >
-                Jeevan
+              {/* Name */}
+              <h1 className="leading-[0.9] font-bold text-white mb-6" style={{ fontFamily: 'var(--font-space)', fontSize: 'clamp(4rem, 7vw, 7.5rem)', letterSpacing: '-0.02em' }}>
+                JEEVAN
               </h1>
 
-              <motion.p
-                initial={{ opacity: 0, y: 12 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.5, duration: 0.8, ease: "easeOut" }}
-                className="max-w-[560px] mx-auto font-normal mb-9 md:mb-10 leading-[1.4] tracking-normal"
-                style={{
-                  fontSize: 'clamp(16px, 1.3vw, 20px)',
-                  color: 'rgba(255,255,255,0.65)',
-                }}
-              >
-                I build intelligent systems that transform data into decisions.
-              </motion.p>
+              {/* Description */}
+              <p className="text-[16px] md:text-[18px] text-white/70 font-light leading-relaxed mb-6 max-w-[480px]">
+                Designing intelligent systems that transform complex data into meaningful insights.
+              </p>
 
-              <motion.div
-                initial={{ opacity: 0, y: 12 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.8, duration: 0.8, ease: "easeOut" }}
-                className="flex flex-col sm:flex-row items-center justify-center gap-4 pointer-events-auto"
-              >
-                <a
-                  href="/resume.html"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center gap-2 rounded-[10px] bg-white text-black font-bold text-[13px] tracking-[0.1em] uppercase hover:shadow-[0_12px_40px_rgba(255,255,255,0.25)] hover:translate-y-[-2px] transition-all duration-300 w-[155px] h-[50px]"
-                >
-                  <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
-                  </svg>
-                  Resume
+              {/* Roles List */}
+              <div className="flex flex-wrap items-center gap-3 text-[14px] md:text-[15px] font-semibold mb-10">
+                <span className="text-[#00E5FF]">AI Engineer</span>
+                <span className="text-white/30">•</span>
+                <span className="text-[#B829FF]">Data Scientist</span>
+                <span className="text-white/30">•</span>
+                <span className="text-[#4D94FF]">ML Developer</span>
+              </div>
+
+              {/* Buttons */}
+              <div className="flex flex-wrap items-center gap-4">
+                <a href="/resume.html" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-8 py-3.5 rounded-xl bg-gradient-to-r from-blue-600 to-purple-600 text-white font-bold text-[13px] tracking-wide uppercase hover:opacity-90 transition-opacity">
+                  <span className="text-lg leading-none">↓</span> RESUME
                 </a>
-                <a
-                  href="#connect"
-                  className="inline-flex items-center justify-center gap-2 rounded-[10px] bg-transparent border border-white/25 text-white/85 font-bold text-[13px] tracking-[0.1em] uppercase hover:bg-white/[0.08] hover:border-white/40 hover:translate-y-[-2px] transition-all duration-300 w-[155px] h-[50px]"
-                >
-                  Connect
-                  <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                  </svg>
+                <a href="#projects" className="flex items-center gap-2 px-8 py-3.5 rounded-xl border border-white/20 text-white font-bold text-[13px] tracking-wide uppercase hover:bg-white/5 transition-colors">
+                  CASE STUDIES <span className="text-lg leading-none">→</span>
                 </a>
-              </motion.div>
+              </div>
+            </motion.div>
+
+            {/* Right Side Stat Cards */}
+            <motion.div 
+              initial={{ opacity: 0, x: 40 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 1.1, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}
+              className="hidden lg:flex flex-col gap-4 z-20 pointer-events-auto mt-[-40px]"
+            >
+              {/* Card 1 */}
+              <div className="flex items-center gap-6 p-5 rounded-[20px] bg-black/40 backdrop-blur-md border border-white/[0.05] min-w-[260px] shadow-[0_8px_30px_rgba(0,0,0,0.3)]">
+                <div>
+                  <p className="text-[10px] text-white/40 font-semibold tracking-wider uppercase mb-1">PROJECTS</p>
+                  <p className="text-2xl font-bold text-white leading-none mb-1">10+</p>
+                  <p className="text-[12px] text-white/50">Completed</p>
+                </div>
+                <div className="ml-auto w-11 h-11 rounded-xl bg-white/5 flex items-center justify-center text-lg border border-white/[0.05]">🚀</div>
+              </div>
+              {/* Card 2 */}
+              <div className="flex items-center gap-6 p-5 rounded-[20px] bg-black/40 backdrop-blur-md border border-white/[0.05] min-w-[260px] shadow-[0_8px_30px_rgba(0,0,0,0.3)]">
+                <div>
+                  <p className="text-[10px] text-white/40 font-semibold tracking-wider uppercase mb-1">EXPERIENCE</p>
+                  <p className="text-2xl font-bold text-white leading-none mb-1">2+</p>
+                  <p className="text-[12px] text-white/50">Years Learning</p>
+                </div>
+                <div className="ml-auto w-11 h-11 rounded-xl bg-[#1E3A8A]/30 text-[#4D94FF] flex items-center justify-center text-[12px] font-bold border border-[#4D94FF]/20 pb-0.5">&lt;/&gt;</div>
+              </div>
+              {/* Card 3 */}
+              <div className="flex items-center gap-6 p-5 rounded-[20px] bg-black/40 backdrop-blur-md border border-white/[0.05] min-w-[260px] shadow-[0_8px_30px_rgba(0,0,0,0.3)]">
+                <div>
+                  <p className="text-[10px] text-white/40 font-semibold tracking-wider uppercase mb-1">FOCUS</p>
+                  <p className="text-2xl font-bold text-white leading-none mb-1">AI / ML</p>
+                  <p className="text-[12px] text-white/50">Solutions</p>
+                </div>
+                <div className="ml-auto w-11 h-11 rounded-xl bg-yellow-500/10 text-yellow-400 flex items-center justify-center text-lg border border-yellow-500/20">💡</div>
+              </div>
             </motion.div>
           </div>
+
+          {/* Bottom Info Bar & Scroll indicator */}
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, ease: "easeOut", delay: 0.6 }}
+            className="absolute bottom-6 md:bottom-10 left-1/2 -translate-x-1/2 w-full max-w-[900px] px-6 flex flex-col items-center z-20 pointer-events-none"
+          >
+            <div className="w-full flex flex-col md:flex-row items-center justify-between gap-4 md:gap-0 p-4 rounded-[24px] md:rounded-[100px] bg-black/40 backdrop-blur-xl border border-white/[0.08] mb-6 md:mb-8 shadow-[0_8px_40px_rgba(0,0,0,0.4)] pointer-events-auto">
+              {/* Item 1 */}
+              <div className="flex items-center justify-center md:justify-start gap-4 px-4 w-full md:w-auto">
+                <div className="w-10 h-10 rounded-full bg-[#00E5FF]/10 flex items-center justify-center text-[#00E5FF] text-lg shrink-0">🎓</div>
+                <div className="text-left">
+                  <p className="text-[13px] font-bold text-[#00E5FF] leading-tight">3rd Year</p>
+                  <p className="text-[12px] text-white/60">B.E. AI & DS</p>
+                </div>
+              </div>
+              <div className="hidden md:block w-[1px] h-10 bg-white/10 shrink-0"></div>
+              
+              {/* Item 2 */}
+              <div className="flex items-center justify-center md:justify-start gap-4 px-4 w-full md:w-auto">
+                <div className="w-10 h-10 rounded-full bg-[#4D94FF]/10 flex items-center justify-center text-[#4D94FF] text-lg shrink-0">🏫</div>
+                <div className="text-left">
+                  <p className="text-[13px] font-bold text-[#4D94FF] leading-tight">Coorg Institute</p>
+                  <p className="text-[12px] text-white/60">Of Technology</p>
+                </div>
+              </div>
+              <div className="hidden md:block w-[1px] h-10 bg-white/10 shrink-0"></div>
+              
+              {/* Item 3 */}
+              <div className="flex items-center justify-center md:justify-start gap-4 px-4 w-full md:w-auto">
+                <div className="w-10 h-10 rounded-full bg-[#B829FF]/10 flex items-center justify-center text-[#B829FF] text-lg shrink-0">🧠</div>
+                <div className="text-left">
+                  <p className="text-[13px] font-bold text-[#B829FF] leading-tight">AI & Data Science</p>
+                  <p className="text-[12px] text-white/60">Specialization</p>
+                </div>
+              </div>
+            </div>
+            
+            <div className="flex flex-col items-center gap-2">
+              <p className="text-[9px] tracking-[0.3em] text-white/40 font-semibold uppercase">SCROLL TO EXPLORE</p>
+              <div className="w-[18px] h-7 rounded-full border border-white/30 flex justify-center p-[3px]">
+                <motion.div 
+                  animate={{ y: [0, 8, 0] }}
+                  transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+                  className="w-[3px] h-[5px] bg-white/60 rounded-full"
+                />
+              </div>
+            </div>
+          </motion.div>
         </motion.div>
 
         {/* ── ABOUT ── */}
