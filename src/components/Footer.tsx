@@ -1,6 +1,7 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
+
 
 const contactLinks = [
   {
@@ -88,13 +89,13 @@ export default function Footer() {
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
         >
           <p className="text-[10px] tracking-[0.3em] uppercase text-white/30 mb-5 font-medium">
-            Let's work together
+            Let&apos;s work together
           </p>
           <h3
             className="text-4xl sm:text-5xl md:text-7xl font-bold tracking-tighter mb-6 bg-gradient-to-br from-white via-white/85 to-white/30 bg-clip-text text-transparent leading-[1.05]"
             style={{ fontFamily: "var(--font-space)" }}
           >
-            Let's build something
+            Let&apos;s build something
             <br />
             impactful together.
           </h3>

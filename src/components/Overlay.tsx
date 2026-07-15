@@ -1,6 +1,7 @@
 "use client";
 
-import { motion, useScroll, useTransform, useSpring } from "framer-motion";
+import { motion, useScroll, useTransform, useSpring } from "motion/react";
+
 
 export default function Overlay() {
   const { scrollYProgress } = useScroll();
@@ -35,72 +36,93 @@ export default function Overlay() {
 
   return (
     <div className="pointer-events-none absolute inset-0 z-10 w-full">
-      <div className="sticky top-0 h-screen w-full flex flex-col justify-center px-6 md:px-24">
+      <div className="sticky top-0 h-screen w-full">
 
         {/* ── HERO ── */}
         <motion.div
           style={{ opacity: o1, y: y1, scale: scale1 }}
-          className="absolute inset-0 flex flex-col items-center justify-center text-center w-full"
+          className="absolute inset-0 z-10"
+          data-hero-content
         >
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1.1, ease: [0.22, 1, 0.36, 1] }}
+          {/* Centered hero content container positioned at ~47% from top */}
+          <div
+            className="absolute left-1/2 w-full max-w-[950px] px-6 text-center"
+            style={{
+              top: '47%',
+              transform: 'translate(-50%, -50%)',
+            }}
           >
-            {/* Eyebrow */}
-            <motion.p
-              initial={{ opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2, duration: 0.8, ease: "easeOut" }}
-              className="text-xs tracking-[0.35em] uppercase text-white/30 mb-8 font-medium"
-            >
-              AI & Data Science Engineer
-            </motion.p>
-
-            <h1
-              className="text-5xl sm:text-7xl md:text-[9rem] leading-none font-black tracking-tighter mb-6 bg-gradient-to-b from-white via-white/90 to-white/30 bg-clip-text text-transparent"
-              style={{ fontFamily: "var(--font-space)" }}
-            >
-              Jeevan H S
-            </h1>
-
-            <motion.p
-              initial={{ opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.5, duration: 0.8, ease: "easeOut" }}
-              className="text-base md:text-xl text-white/50 max-w-xl mx-auto font-light mb-12 leading-relaxed tracking-wide"
-            >
-              I build intelligent systems that transform data into decisions.
-            </motion.p>
-
             <motion.div
-              initial={{ opacity: 0, y: 12 }}
+              initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.8, duration: 0.8, ease: "easeOut" }}
-              className="flex flex-col sm:flex-row items-center justify-center gap-4 pointer-events-auto"
+              transition={{ duration: 1.1, ease: [0.22, 1, 0.36, 1] }}
+              className="flex flex-col items-center"
             >
-              <a
-                href="/resume.html"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2.5 px-8 py-3.5 rounded-xl bg-white text-black font-bold text-sm tracking-widest uppercase hover:scale-105 hover:shadow-[0_0_40px_rgba(255,255,255,0.35)] transition-all duration-300"
+              {/* Eyebrow */}
+              <motion.p
+                initial={{ opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.2, duration: 0.8, ease: "easeOut" }}
+                className="text-[11px] md:text-[12px] tracking-[0.4em] uppercase font-semibold mb-7 md:mb-8"
+                style={{ color: 'rgba(255,255,255,0.38)' }}
               >
-                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
-                </svg>
-                Resume
-              </a>
-              <a
-                href="#connect"
-                className="inline-flex items-center gap-2 px-8 py-3.5 rounded-xl bg-white/5 border border-white/10 text-white/70 font-semibold text-sm tracking-widest uppercase hover:bg-white/10 hover:text-white transition-all duration-300"
+                AI & DATA SCIENCE ENGINEER
+              </motion.p>
+
+              <h1
+                className="leading-[0.92] font-extrabold text-white mb-6 md:mb-7"
+                style={{
+                  fontFamily: 'var(--font-space)',
+                  fontSize: 'clamp(5rem, 8vw, 8.5rem)',
+                  letterSpacing: '-0.05em',
+                  textShadow: '0 2px 20px rgba(0,0,0,0.35)',
+                }}
               >
-                Connect
-                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                </svg>
-              </a>
+                Jeevan
+              </h1>
+
+              <motion.p
+                initial={{ opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.5, duration: 0.8, ease: "easeOut" }}
+                className="max-w-[560px] mx-auto font-normal mb-9 md:mb-10 leading-[1.4] tracking-normal"
+                style={{
+                  fontSize: 'clamp(16px, 1.3vw, 20px)',
+                  color: 'rgba(255,255,255,0.65)',
+                }}
+              >
+                I build intelligent systems that transform data into decisions.
+              </motion.p>
+
+              <motion.div
+                initial={{ opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.8, duration: 0.8, ease: "easeOut" }}
+                className="flex flex-col sm:flex-row items-center justify-center gap-4 pointer-events-auto"
+              >
+                <a
+                  href="/resume.html"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center gap-2 rounded-[10px] bg-white text-black font-bold text-[13px] tracking-[0.1em] uppercase hover:shadow-[0_12px_40px_rgba(255,255,255,0.25)] hover:translate-y-[-2px] transition-all duration-300 w-[155px] h-[50px]"
+                >
+                  <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                  </svg>
+                  Resume
+                </a>
+                <a
+                  href="#connect"
+                  className="inline-flex items-center justify-center gap-2 rounded-[10px] bg-transparent border border-white/25 text-white/85 font-bold text-[13px] tracking-[0.1em] uppercase hover:bg-white/[0.08] hover:border-white/40 hover:translate-y-[-2px] transition-all duration-300 w-[155px] h-[50px]"
+                >
+                  Connect
+                  <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                  </svg>
+                </a>
+              </motion.div>
             </motion.div>
-          </motion.div>
+          </div>
         </motion.div>
 
         {/* ── ABOUT ── */}
@@ -113,7 +135,7 @@ export default function Overlay() {
               About Me
             </span>
             <p className="text-2xl md:text-4xl leading-relaxed text-white/90 font-light" style={{ fontFamily: "var(--font-space)" }}>
-              I'm a third-year Artificial Intelligence and Data Science student
+              I&apos;m a third-year Artificial Intelligence and Data Science student
               at Coorg Institute of Technology.{" "}
               <span className="text-white/45">
                 I am passionate about building intelligent systems that solve

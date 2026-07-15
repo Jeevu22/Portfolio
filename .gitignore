@@ -21,3 +21,7 @@ tsconfig.tsbuildinfo
 
 # Dev scripts
 dev.bat
+
+# OpenNext / Cloudflare
+.open-next/
+.wrangler/

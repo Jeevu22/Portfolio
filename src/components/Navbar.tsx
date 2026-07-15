@@ -1,6 +1,7 @@
 "use client";
 
-import { motion, useScroll, useMotionValueEvent, AnimatePresence } from "framer-motion";
+import { motion, useScroll, useMotionValueEvent, AnimatePresence } from "motion/react";
+
 import { useState } from "react";
 
 const socialLinks = [

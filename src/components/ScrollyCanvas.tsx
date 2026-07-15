@@ -1,7 +1,8 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { useScroll, useTransform, useMotionValueEvent, motion } from "framer-motion";
+import { useScroll, useTransform, useMotionValueEvent, motion } from "motion/react";
+
 
 const TOTAL_FRAMES = 15;
 
@@ -104,11 +105,17 @@ export default function ScrollyCanvas() {
   }, [images, frameIndex]);
 
   return (
-    <div ref={containerRef} className="absolute inset-0 w-full h-full">
-      <div className="sticky top-0 h-screen w-full overflow-hidden bg-[#0a0a0a] flex items-center justify-center p-4 md:p-12">
+    <div ref={containerRef} className="absolute inset-0 w-full h-full z-0">
+      <div className="sticky top-0 h-screen w-full overflow-hidden bg-[#0a0a0a] flex items-center justify-center">
+        {/* Dark overlay for readability */}
+        <div className="absolute inset-0 bg-gradient-to-b from-[rgba(2,5,10,0.05)] via-[rgba(2,5,10,0.18)] to-[rgba(2,5,10,0.32)] z-[3]" />
+        
         <canvas
           ref={canvasRef}
-          className="block w-full h-full object-cover rounded-[2rem] opacity-30 shadow-2xl"
+          className="absolute inset-0 block w-full h-full object-cover z-[2]"
+          style={{
+            filter: 'brightness(0.80) contrast(1.08) saturate(0.95)',
+          }}
         />
         {images.length < TOTAL_FRAMES && (
           <motion.div 
