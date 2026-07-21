@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { useScroll, useTransform, useMotionValueEvent, motion } from "motion/react";
+import { useScroll, useTransform, useMotionValueEvent, motion, useSpring } from "motion/react";
 
 
 const TOTAL_FRAMES = 15;
@@ -25,7 +25,9 @@ export default function ScrollyCanvas() {
   });
 
   // Map scroll progress (0 to 1) to frame index (0 to TOTAL_FRAMES - 1)
+  // Use lower friction for smoother scrolling experience
   const frameIndex = useTransform(scrollYProgress, [0, 1], [0, TOTAL_FRAMES - 1]);
+  const smoothFrameIndex = useSpring(frameIndex, { stiffness: 100, damping: 30, mass: 0.5 });
 
   useEffect(() => {
     // Preload all images
@@ -80,9 +82,13 @@ export default function ScrollyCanvas() {
     ctx.drawImage(img, offsetX, offsetY, drawWidth, drawHeight);
   };
 
-  useMotionValueEvent(frameIndex, "change", (latest) => {
+  useMotionValueEvent(smoothFrameIndex, "change", (latest) => {
     if (images.length === TOTAL_FRAMES) {
-      renderFrame(Math.round(latest), images);
+      const roundedIndex = Math.round(latest);
+      // Use requestAnimationFrame to sync with display refresh
+      requestAnimationFrame(() => {
+        renderFrame(roundedIndex, images);
+      });
     }
   });
 
@@ -105,8 +111,8 @@ export default function ScrollyCanvas() {
   }, [images, frameIndex]);
 
   return (
-    <div ref={containerRef} className="absolute inset-0 w-full h-full z-0">
-      <div className="sticky top-0 h-screen w-full overflow-hidden bg-[#0a0a0a] flex items-center justify-center">
+    <div ref={containerRef} className="absolute inset-0 w-full h-full z-0" style={{ contain: 'layout style paint' }}>
+      <div className="sticky top-0 h-screen w-full overflow-hidden bg-[#0a0a0a] flex items-center justify-center" style={{ willChange: 'contents' }}>
         {/* Dark overlay for readability */}
         <div className="absolute inset-0 bg-gradient-to-b from-[rgba(2,5,10,0.05)] via-[rgba(2,5,10,0.18)] to-[rgba(2,5,10,0.32)] z-[3]" />
         
@@ -115,6 +121,10 @@ export default function ScrollyCanvas() {
           className="absolute inset-0 block w-full h-full object-cover z-[2]"
           style={{
             filter: 'brightness(0.80) contrast(1.08) saturate(0.95)',
+            willChange: 'transform',
+            backfaceVisibility: 'hidden',
+            perspective: 1000,
+            transform: 'translateZ(0)',
           }}
         />
         {images.length < TOTAL_FRAMES && (

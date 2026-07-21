@@ -6,11 +6,12 @@ import { motion, useScroll, useTransform, useSpring } from "motion/react";
 export default function Overlay() {
   const { scrollYProgress } = useScroll();
 
-  // Smooth spring wrapper for all scroll transforms
+  // Use spring with optimized settings for smooth but responsive scrolling
   const smoothProgress = useSpring(scrollYProgress, {
-    stiffness: 60,
-    damping: 20,
+    stiffness: 80,
+    damping: 25,
     restDelta: 0.001,
+    mass: 0.8,
   });
 
   // Section 1: Hero (0 - 0.15)
@@ -41,7 +42,7 @@ export default function Overlay() {
         {/* ── HERO ── */}
         <motion.div
           style={{ opacity: o1, y: y1, scale: scale1 }}
-          className="absolute inset-0 z-10 flex flex-col justify-center px-6 md:px-12 lg:px-24"
+          className="absolute inset-0 z-10 flex flex-col justify-center px-4 sm:px-6 md:px-12 lg:px-24"
           data-hero-content
         >
           <div className="w-full max-w-[1400px] mx-auto flex flex-col lg:flex-row items-center justify-between gap-10 lg:gap-0 h-full relative pt-10 md:pt-20">
@@ -81,12 +82,12 @@ export default function Overlay() {
               </div>
 
               {/* Buttons */}
-              <div className="flex flex-wrap items-center gap-4">
-                <a href="/resume.html" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-8 py-3.5 rounded-xl bg-gradient-to-r from-blue-600 to-purple-600 text-white font-bold text-[13px] tracking-wide uppercase hover:opacity-90 transition-opacity">
-                  <span className="text-lg leading-none">↓</span> RESUME
+              <div className="flex flex-wrap items-center gap-5">
+                <a href="/resume.html" target="_blank" rel="noopener noreferrer" className="group flex items-center gap-2 px-8 py-3.5 rounded-xl bg-gradient-to-r from-[#4D94FF] to-[#B829FF] text-white font-bold text-[13px] tracking-[0.1em] uppercase hover:shadow-[0_0_30px_rgba(184,41,255,0.4)] transition-all duration-300">
+                  <span className="text-lg leading-none group-hover:translate-y-0.5 transition-transform">↓</span> RESUME
                 </a>
-                <a href="#projects" className="flex items-center gap-2 px-8 py-3.5 rounded-xl border border-white/20 text-white font-bold text-[13px] tracking-wide uppercase hover:bg-white/5 transition-colors">
-                  CASE STUDIES <span className="text-lg leading-none">→</span>
+                <a href="#projects" className="group flex items-center gap-2 px-8 py-3.5 rounded-xl bg-white/[0.03] border border-white/10 text-white font-bold text-[13px] tracking-[0.1em] uppercase hover:bg-white/10 hover:border-white/20 transition-all duration-300 backdrop-blur-sm shadow-sm">
+                  CASE STUDIES <span className="text-lg leading-none group-hover:translate-x-1 transition-transform">→</span>
                 </a>
               </div>
             </motion.div>
@@ -99,66 +100,66 @@ export default function Overlay() {
               className="hidden lg:flex flex-col gap-4 z-20 pointer-events-auto mt-[-40px]"
             >
               {/* Card 1 */}
-              <div className="flex items-center gap-6 p-5 rounded-[20px] bg-black/40 backdrop-blur-md border border-white/[0.05] min-w-[260px] shadow-[0_8px_30px_rgba(0,0,0,0.3)]">
+              <div className="group flex items-center gap-6 p-5 rounded-[20px] bg-black/40 backdrop-blur-xl border border-white/[0.08] min-w-[260px] shadow-[0_8px_30px_rgba(0,0,0,0.3),inset_0_1px_0_rgba(255,255,255,0.1)] hover:bg-black/60 transition-colors duration-300">
                 <div>
                   <p className="text-[10px] text-white/40 font-semibold tracking-wider uppercase mb-1">PROJECTS</p>
                   <p className="text-2xl font-bold text-white leading-none mb-1">10+</p>
                   <p className="text-[12px] text-white/50">Completed</p>
                 </div>
-                <div className="ml-auto w-11 h-11 rounded-xl bg-white/5 flex items-center justify-center text-lg border border-white/[0.05]">🚀</div>
+                <div className="ml-auto w-11 h-11 rounded-[14px] bg-gradient-to-br from-white/10 to-transparent flex items-center justify-center text-lg border border-white/[0.1] group-hover:scale-110 transition-transform duration-300 shadow-inner">🚀</div>
               </div>
               {/* Card 2 */}
-              <div className="flex items-center gap-6 p-5 rounded-[20px] bg-black/40 backdrop-blur-md border border-white/[0.05] min-w-[260px] shadow-[0_8px_30px_rgba(0,0,0,0.3)]">
+              <div className="group flex items-center gap-6 p-5 rounded-[20px] bg-black/40 backdrop-blur-xl border border-white/[0.08] min-w-[260px] shadow-[0_8px_30px_rgba(0,0,0,0.3),inset_0_1px_0_rgba(255,255,255,0.1)] hover:bg-black/60 transition-colors duration-300">
                 <div>
                   <p className="text-[10px] text-white/40 font-semibold tracking-wider uppercase mb-1">EXPERIENCE</p>
                   <p className="text-2xl font-bold text-white leading-none mb-1">2+</p>
                   <p className="text-[12px] text-white/50">Years Learning</p>
                 </div>
-                <div className="ml-auto w-11 h-11 rounded-xl bg-[#1E3A8A]/30 text-[#4D94FF] flex items-center justify-center text-[12px] font-bold border border-[#4D94FF]/20 pb-0.5">&lt;/&gt;</div>
+                <div className="ml-auto w-11 h-11 rounded-[14px] bg-gradient-to-br from-[#1E3A8A]/40 to-transparent text-[#4D94FF] flex items-center justify-center text-[13px] font-bold border border-[#4D94FF]/30 pb-0.5 group-hover:scale-110 transition-transform duration-300 shadow-inner">&lt;/&gt;</div>
               </div>
               {/* Card 3 */}
-              <div className="flex items-center gap-6 p-5 rounded-[20px] bg-black/40 backdrop-blur-md border border-white/[0.05] min-w-[260px] shadow-[0_8px_30px_rgba(0,0,0,0.3)]">
+              <div className="group flex items-center gap-6 p-5 rounded-[20px] bg-black/40 backdrop-blur-xl border border-white/[0.08] min-w-[260px] shadow-[0_8px_30px_rgba(0,0,0,0.3),inset_0_1px_0_rgba(255,255,255,0.1)] hover:bg-black/60 transition-colors duration-300">
                 <div>
                   <p className="text-[10px] text-white/40 font-semibold tracking-wider uppercase mb-1">FOCUS</p>
                   <p className="text-2xl font-bold text-white leading-none mb-1">AI / ML</p>
                   <p className="text-[12px] text-white/50">Solutions</p>
                 </div>
-                <div className="ml-auto w-11 h-11 rounded-xl bg-yellow-500/10 text-yellow-400 flex items-center justify-center text-lg border border-yellow-500/20">💡</div>
+                <div className="ml-auto w-11 h-11 rounded-[14px] bg-gradient-to-br from-yellow-500/20 to-transparent text-yellow-400 flex items-center justify-center text-lg border border-yellow-500/30 group-hover:scale-110 transition-transform duration-300 shadow-inner">💡</div>
               </div>
             </motion.div>
           </div>
 
           {/* Bottom Info Bar & Scroll indicator */}
           <motion.div 
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, ease: "easeOut", delay: 0.6 }}
-            className="absolute bottom-6 md:bottom-10 left-1/2 -translate-x-1/2 w-full max-w-[900px] px-6 flex flex-col items-center z-20 pointer-events-none"
+            initial={{ opacity: 0, y: 30, x: "-50%" }}
+            animate={{ opacity: 1, y: 0, x: "-50%" }}
+            transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1], delay: 0.6 }}
+            className="absolute bottom-6 md:bottom-10 left-1/2 w-full max-w-[900px] px-6 flex flex-col items-center z-20 pointer-events-none"
           >
-            <div className="w-full flex flex-col md:flex-row items-center justify-between gap-4 md:gap-0 p-4 rounded-[24px] md:rounded-[100px] bg-black/40 backdrop-blur-xl border border-white/[0.08] mb-6 md:mb-8 shadow-[0_8px_40px_rgba(0,0,0,0.4)] pointer-events-auto">
+            <div className="w-full flex flex-col md:flex-row items-center justify-between gap-4 md:gap-0 p-4 md:px-8 rounded-[24px] md:rounded-full bg-black/50 backdrop-blur-2xl border border-white/[0.1] mb-6 md:mb-8 shadow-[0_8px_40px_rgba(0,0,0,0.6),inset_0_1px_0_rgba(255,255,255,0.1)] pointer-events-auto">
               {/* Item 1 */}
-              <div className="flex items-center justify-center md:justify-start gap-4 px-4 w-full md:w-auto">
-                <div className="w-10 h-10 rounded-full bg-[#00E5FF]/10 flex items-center justify-center text-[#00E5FF] text-lg shrink-0">🎓</div>
+              <div className="flex items-center justify-center md:justify-start gap-4 px-2 w-full md:w-auto group">
+                <div className="w-11 h-11 rounded-full bg-gradient-to-br from-[#00E5FF]/20 to-transparent flex items-center justify-center text-[#00E5FF] text-lg shrink-0 border border-[#00E5FF]/20 group-hover:scale-110 transition-transform duration-300">🎓</div>
                 <div className="text-left">
                   <p className="text-[13px] font-bold text-[#00E5FF] leading-tight">3rd Year</p>
                   <p className="text-[12px] text-white/60">B.E. AI & DS</p>
                 </div>
               </div>
-              <div className="hidden md:block w-[1px] h-10 bg-white/10 shrink-0"></div>
+              <div className="hidden md:block w-[1px] h-12 bg-white/[0.08] shrink-0"></div>
               
               {/* Item 2 */}
-              <div className="flex items-center justify-center md:justify-start gap-4 px-4 w-full md:w-auto">
-                <div className="w-10 h-10 rounded-full bg-[#4D94FF]/10 flex items-center justify-center text-[#4D94FF] text-lg shrink-0">🏫</div>
+              <div className="flex items-center justify-center md:justify-start gap-4 px-2 w-full md:w-auto group">
+                <div className="w-11 h-11 rounded-full bg-gradient-to-br from-[#4D94FF]/20 to-transparent flex items-center justify-center text-[#4D94FF] text-lg shrink-0 border border-[#4D94FF]/20 group-hover:scale-110 transition-transform duration-300">🏫</div>
                 <div className="text-left">
                   <p className="text-[13px] font-bold text-[#4D94FF] leading-tight">Coorg Institute</p>
                   <p className="text-[12px] text-white/60">Of Technology</p>
                 </div>
               </div>
-              <div className="hidden md:block w-[1px] h-10 bg-white/10 shrink-0"></div>
+              <div className="hidden md:block w-[1px] h-12 bg-white/[0.08] shrink-0"></div>
               
               {/* Item 3 */}
-              <div className="flex items-center justify-center md:justify-start gap-4 px-4 w-full md:w-auto">
-                <div className="w-10 h-10 rounded-full bg-[#B829FF]/10 flex items-center justify-center text-[#B829FF] text-lg shrink-0">🧠</div>
+              <div className="flex items-center justify-center md:justify-start gap-4 px-2 w-full md:w-auto group">
+                <div className="w-11 h-11 rounded-full bg-gradient-to-br from-[#B829FF]/20 to-transparent flex items-center justify-center text-[#B829FF] text-lg shrink-0 border border-[#B829FF]/20 group-hover:scale-110 transition-transform duration-300">🧠</div>
                 <div className="text-left">
                   <p className="text-[13px] font-bold text-[#B829FF] leading-tight">AI & Data Science</p>
                   <p className="text-[12px] text-white/60">Specialization</p>
